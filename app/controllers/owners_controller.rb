@@ -31,17 +31,20 @@ class OwnersController < ApplicationController
   end
 
   patch '/owners/:id' do
-    if !params[:owner].keys.include?("pet_ids")
-    params[:owner]["pet_ids"] = []
-    end
-#binding.pry
-    @owner = Owner.find(params[:id])
-    binding.pry
-    @owner.update(params["owner"])
-   # binding.pry
     if !params["pet"]["name"].empty?
       @owner.pets << Pet.create(name: params["pet"]["name"])
     end
+    
+    
+#binding.pry
+    @owner = Owner.find(params[:id])
+   # binding.pry
+    @owner.update(params["owner"])
+   # binding.pry
+   if !params[:owner].keys.include?("pet_ids")
+    params[:owner]["pet_ids"] = []
+    end
+    
     redirect to "owners/#{@owner.id}"
 
   end
