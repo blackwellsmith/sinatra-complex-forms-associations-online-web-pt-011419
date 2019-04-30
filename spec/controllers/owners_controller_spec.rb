@@ -67,7 +67,7 @@ describe "Owners Controller" do
   describe "edit action" do 
     before(:each) do
       @owner = Owner.create(:name => "Carla")
-      @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
+      @pet = Pet.create(:name => "Chewie Darling", :owner_id => @owner.id)
     end
 
     it "can visit '/owners/:id/edit' " do 
